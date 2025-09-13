@@ -63,4 +63,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: false 
-          tags: ghcr.io/${{ github.repository_owner }}/science-service:latest
+          tags: ghcr.io/ivan-zelyapugin/science-service:latest
