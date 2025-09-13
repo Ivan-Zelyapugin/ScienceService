@@ -47,10 +47,12 @@ using (var scope = app.Services.CreateScope())
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    
     app.UseDeveloperExceptionPage();
 }
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Включаем кастомную обработку исключений
 app.UseCustomExceptionHandler();
