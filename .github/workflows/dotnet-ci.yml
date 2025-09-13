@@ -45,6 +45,8 @@ jobs:
         uses: dorny/test-reporter@v1
         with:
           name: "ScienceService Tests"
+          path: '**/test_results.trx'
+          reporter: trx
           test-results-files: '**/test_results.trx'
 
       - name: Publish WebApi for Docker (optional artifact)
