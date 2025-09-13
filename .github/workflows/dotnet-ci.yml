@@ -46,7 +46,7 @@ jobs:
         with:
           name: "ScienceService Tests"
           path: '**/test_results.trx'   
-          reporter: dotnet              
+          reporter: dotnet-trx              
           path-replace-backslashes: false
           list-suites: all
           list-tests: all
