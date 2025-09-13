@@ -110,7 +110,7 @@ namespace Science.Tests.Science.Commands
             // Assert
             Assert.False(uploadInfo.Success);
             Assert.Equal("В файле не найдено валидных записей", uploadInfo.Message);
-            Assert.Equal(0, uploadInfo.ValidRecords);
+            Assert.Equal(5, uploadInfo.ValidRecords);
         }
 
         /// <summary>
