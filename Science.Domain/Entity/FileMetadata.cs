@@ -13,12 +13,12 @@
         /// <summary>
         /// Имя автора файла.
         /// </summary>
-        public string AuthorName { get; set; }
+        public string? AuthorName { get; set; }
 
         /// <summary>
         /// Имя файла.
         /// </summary>
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
 
         /// <summary>
         /// Размер файла в байтах.
@@ -28,7 +28,7 @@
         /// <summary>
         /// Тип файла.
         /// </summary>
-        public string FileType { get; set; }
+        public string? FileType { get; set; }
 
         /// <summary>
         /// Дата создания файла.

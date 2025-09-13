@@ -8,6 +8,6 @@
         /// <summary>
         /// Список результатов экспериментов.
         /// </summary>
-        public IList<ExperimentResultsDto> Results { get; set; }
+        public IList<ExperimentResultsDto>? Results { get; set; }
     }
 }

@@ -10,12 +10,12 @@ namespace Science.Application.Science.Commands.UploadExperiment
         /// <summary>
         /// Имя файла эксперимента.
         /// </summary>
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
 
         /// <summary>
         /// Поток данных содержимого файла.
         /// </summary>
-        public Stream FileContent { get; set; }
+        public Stream? FileContent { get; set; } 
 
         /// <summary>
         /// Размер файла в байтах.
@@ -25,7 +25,7 @@ namespace Science.Application.Science.Commands.UploadExperiment
         /// <summary>
         /// Имя автора файла.
         /// </summary>
-        public string AuthorName { get; set; }
+        public string? AuthorName { get; set; }
 
         /// <summary>
         /// Дата создания файла.

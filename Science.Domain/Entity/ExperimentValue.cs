@@ -33,6 +33,6 @@
         /// <summary>
         /// Навигационное свойство.
         /// </summary>
-        public FileMetadata FileMetadata { get; set; }
+        public FileMetadata? FileMetadata { get; set; }
     }
 }
