@@ -1,4 +1,4 @@
-name: .NET CI
+name: .NET CI + Docker
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,8 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x' 
+          dotnet-version: '8.0.x'
+
       - name: Cache NuGet packages
         uses: actions/cache@v4
         with:
@@ -35,22 +36,28 @@ jobs:
         run: dotnet restore ScienceService.sln
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build ScienceService.sln --no-restore --configuration Release
 
-      - name: Test
-        run: dotnet test --verbosity normal
+      - name: Run Tests
+        run: dotnet test ScienceService.sln --no-build --configuration Release --logger "trx;LogFileName=test_results.trx"
+
+      - name: Publish Test Results
+        uses: dorny/test-reporter@v1
+        with:
+          name: ScienceService Tests
+          path: '**/test_results.trx'
 
       - name: Publish WebApi for Docker (optional artifact)
         run: dotnet publish Science.WebApi/Science.WebApi.csproj -c Release -o ./publish
 
   docker:
-    needs: build
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Login to GitHub Container Registry (optional)
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -62,5 +69,5 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          push: false 
+          push: false
           tags: ghcr.io/ivan-zelyapugin/science-service:latest
